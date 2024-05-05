@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "if_alg.h": "c",
+        "socket.h": "c",
+        "chrono": "c",
+        "crypt.h": "c",
+        "stdio.h": "c"
+    }
+}
