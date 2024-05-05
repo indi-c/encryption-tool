@@ -3,3 +3,4 @@ notes.md
 testing/*
 .vscode/*
 .vscode/
+.vscode/settings.json

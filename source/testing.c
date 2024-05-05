@@ -1,7 +1,7 @@
 #include "crypt.h"
 
 int main(void) {
-    char key[16] = "0123456789abcdef";
+    char password[16] = "0123456789abcdef";
 
     const char *plaintext = "Single block msg";
 
@@ -10,7 +10,7 @@ int main(void) {
     int sockfd;
     int op;
 
-    if (crypt_init(&key, 16, &sockfd, &op))
+    if (crypt_init(&password, 16))
     {
         perror("crypt_init");
         return 1;

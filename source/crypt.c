@@ -5,6 +5,7 @@
 #include <string.h> // memcpy, strcpy etc
 
 #include "crypt.h"
+#include "kdf.h"
 
 void int_to_char_array(__u8 *arr, int n, int size)
 {
@@ -12,9 +13,17 @@ void int_to_char_array(__u8 *arr, int n, int size)
     {
         arr[i] = (n >> (i * 8)) & 0xff; // shift offset by i bytes and mask with 0xff to get the byte
     }
-    return 0;
 }
 
+int create_socket(int *sockfd)
+{
+    *sockfd = socket(AF_ALG, SOCK_SEQPACKET, 0);
+    if (*sockfd == -1)
+    {
+        return 1;
+    }
+    return 0;
+}
 
 int set_key(int *sockfd, char *key)
 {
@@ -25,8 +34,21 @@ int set_key(int *sockfd, char *key)
     return 0;
 }
 
-int crypt_init(char *password, int password_len, int sockfd, int op)
+int start_operation(int *op, int *sockfd)
 {
+    *op = accept(*sockfd, NULL, 0);
+    if (*op == -1)
+    {
+        return 1;
+    }
+    return 0;
+}
+
+int crypt_init(char *password, int password_len)
+{
+    int sockfd;
+    int op;
+
     struct sockaddr_alg sa = {
         .salg_family = AF_ALG,
         .salg_type = "skcipher",

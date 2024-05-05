@@ -13,11 +13,11 @@
 #define BLOCK_SIZE 16
 #define TWEAK_SIZE 16
 
-int crypt_init(char *key, int key_len);
+int crypt_init(char *password, int password_len);
 
 int crypt_encrypt(char *plaintext, int plaintext_len, char *ciphertext, int ciphertext_len);
 
-int crypt_decrypt(char *ciphertext, int ciphertext_len, char *plaintext, int plaintext_len);
+int crypt_decrypt(char *plaintext, int plaintext_len, char *ciphertext, int ciphertext_len);
 
 int crypt_destroy();
 

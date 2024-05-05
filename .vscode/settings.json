@@ -4,6 +4,7 @@
         "socket.h": "c",
         "chrono": "c",
         "crypt.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "string.h": "c"
     }
 }
