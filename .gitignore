@@ -4,3 +4,6 @@ testing/*
 .vscode/*
 .vscode/
 .vscode/settings.json
+bin/*
+*.o
+*.json

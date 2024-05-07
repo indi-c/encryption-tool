@@ -1,30 +1,26 @@
 #include "crypt.h"
+#include <stdio.h>
 
 int main(void) {
     char password[16] = "0123456789abcdef";
 
-    const char *plaintext = "Single block msg";
-
-    char ciphertext[16];
-
-    int sockfd;
-    int op;
-
-    if (crypt_init(&password, 16))
+    if (crypt_init(password, 16))
     {
         perror("crypt_init");
         return 1;
     }
 
-    if (crypt_encrypt(&plaintext, 16, &ciphertext, 16))
-    {
-        perror("crypt_encrypt");
-        return 1;
-    }
+    // if (crypt_encrypt("/dev/loop6"))
+    // {
+    //     perror("crypt_encrypt");
+    //     crypt_destroy();
+    //     return 1;
+    // }
 
-    if (crypt_decrypt(&ciphertext, 16, &plaintext, 16))
+    if (crypt_decrypt("/dev/loop6"))
     {
         perror("crypt_decrypt");
+        crypt_destroy();
         return 1;
     }
 

@@ -10,7 +10,7 @@ int hash_init(int *sockfd, int *op)
 {
     struct sockaddr_alg sa = {
         .salg_family = AF_ALG,
-        .salg_type = "shash",
+        .salg_type = "hash",
         .salg_name = "sha512"
     };
 
